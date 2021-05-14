@@ -1,0 +1,93 @@
+@import "constants.scss";
+::selection {
+    background: transparent;
+}
+:link { color: black; }
+:visited { color: black; }
+body{
+    background-color: #141414;
+    color: white;
+    margin: 0px;
+
+}
+.content{
+    padding-top: 4%;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+a{
+    color:white;
+}
+a:link {
+    text-decoration: none;
+    color:white;
+}
+
+a:visited {
+    text-decoration: none;
+    color:white;
+}
+
+a:hover {
+    text-decoration: none;
+    color:white;
+}
+
+a:active {
+    text-decoration: none;
+    color:white;
+}
+
+header{
+    background-color: #1c1c1e;
+    width: 100%;
+    font-family: 'Comfortaa', cursive;
+    font-size: 200%;
+    position: fixed;
+}
+.menu-container{
+    position: relative;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto;
+    text-align: center;
+    grid-column-gap: 1em;
+}
+
+#logo{
+    grid-column: 1/4;
+    width: 5em;
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-family: 'Comfortaa', cursive;
+    color: #878787;
+}
+#reg-log{
+    grid-column: 9/9;
+    width: 5em;
+    text-align: center;
+}
+
+header>.menu-container{
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+
+}
+header>.menu-container>a{
+    text-decoration: none;
+}
+header>.menu-container>a:hover{
+    color: #c4001a;
+    transition: color 0.2s ease-in-out;
+}
+header>.menu-container>a:active{
+    color: #c4001a;
+}
+.sliscer{
+    height: 0.15em;
+    background-color: #3d3d3d;
+}
+footer{
+    align-self: end;
+    height: 9em;
+    background-color: #1c1c1e;
+}
