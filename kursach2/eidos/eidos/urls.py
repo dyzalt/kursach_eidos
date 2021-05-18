@@ -23,7 +23,8 @@ urlpatterns = [
     path('', include('main.urls')),
     path('games/', include('games.urls')),
     path('about/', include('about.urls')),
-    path('reg/', include('reg_log.urls'))
+    path('accounts/', include('registration.urls')),  # new
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,

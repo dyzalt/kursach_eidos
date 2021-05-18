@@ -1,0 +1,59 @@
+.sign-in-full{
+    margin: 0 25% 0 25%;
+    text-align: center;
+    height: 77.2vh;
+    padding-top: 8%;
+}
+.sign-in-full h2{
+        font-size: 3em;
+}
+.sign-in-field{
+    text-align: left;
+    background-color: #1c1c1e;
+    padding: 3%;
+    border-radius: 1.9em;
+}
+.sign-in-full .btn-success{
+    margin: 0;
+    padding: 0.3em;
+    border-radius: 0.6em;
+    margin-left: 43%;
+}
+.log-in-full{
+    margin: 0 40% 0 40%;
+    text-align: center;
+    height: 77.2vh;
+    padding-top: 15%;
+}
+.log-in-field{
+    text-align: center;
+    background-color: #1c1c1e;
+    padding: 3%;
+    border-radius: 1.9em;
+}
+.log-in-full h2{
+        font-size: 3em;
+}
+.log-in-full .btn-success{
+    margin: 0;
+    padding: 0.3em;
+    border-radius: 0.6em;
+    font-size: 1.3em;
+}
+.submit-btn{
+    margin-left: 41%;
+    margin-top: 3%;
+    background-color: #c4001a;
+    border-color: #3d3d3d;
+    font-size: 1.5em;
+    background-color: #1c1c1e;
+    color: white;
+    font-family: 'Play', sans-serif;
+}
+#to-login-link>a{
+    color: white;
+    text-decoration: none;
+}
+#to-login-link>a:hover{
+    color: #bababa;
+}

@@ -4,7 +4,7 @@ from django.forms import ModelForm, TextInput, DateTimeInput, Textarea, Clearabl
 class ArticlesForm(ModelForm):
     class Meta:
         model = Articles
-        fields = ['title', 'text', 'date', 'image']
+        fields = ['title', 'text', 'image']
 
         widgets= {
             'title': TextInput(attrs={
@@ -14,10 +14,6 @@ class ArticlesForm(ModelForm):
             'text': Textarea(attrs={
                 'class': 'form-control form-control-text',
                 'placeholder': 'Article text'
-            }),
-            'date': DateTimeInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Date'
             }),
             'image': ClearableFileInput(attrs={
                 'class': 'custom-image-input',

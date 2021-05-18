@@ -1,7 +1,7 @@
 {% extends 'main/layout.html' %}
 {% block title%}News{% endblock title%}
 {% block body %}
-    <a href="{% url 'create' %}"><button class="create-article btn"><svg
+    {% if perms.main.can_add_article %}<a href="{% url 'create' %}">{% else %}<a href="{% url 'home' %}" title="You don`t have enough rights">{% endif %}<button class="create-article btn"><svg
   width="3.5em"
   height="3.5em"
   viewBox="0 0 24 24"

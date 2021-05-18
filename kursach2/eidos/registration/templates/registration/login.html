@@ -1,0 +1,14 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Log in{% endblock title %}
+
+{% block body %}
+    <div class="log-in-full">
+    <h2>Log in</h2>
+      <form method="post" class="log-in-field">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success submit-btn">Submit</button>
+      </form>
+  </div>
+{% endblock body %}
