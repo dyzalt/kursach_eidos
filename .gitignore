@@ -1,1 +1,10 @@
 /kursach2/eidos/games/app/CustomExceptions/__init__.py
+/kursach2/eidos/games/app/DTOS/__init__.py
+/kursach2/eidos/games/app/__init__.py
+/kursach2/eidos/games/app/Parser/HtmlParsers/__init__.py
+/kursach2/eidos/games/app/Parser/__init__.py
+/kursach2/eidos/__init__.py
+/kursach2/__init__.py
+*.pyc
+/__pycache__/
+.idea
