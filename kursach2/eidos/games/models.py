@@ -150,3 +150,4 @@ class Game(models.Model):
         prices = self.get_stores_prices()
         name = self.game_name
         return GameDTO(name, urls, prices)
+

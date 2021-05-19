@@ -1,0 +1,15 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Sign Page{% endblock title %}
+
+{% block body %}
+  <div class="sign-in-full">
+    <h2>Sign up</h2>
+      <form method="post" class="sign-in-field">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success submit-btn">Submit</button>
+      </form>
+    <h4 id="to-login-link"><a href="{% url 'login'%}">Or login if you have an account...</a></h4>
+  </div>
+{% endblock body %}

@@ -1,0 +1,26 @@
+.full-article{
+    padding-left: 20%;
+    padding-right: 20%;
+}
+.full-article>img{
+    width: 100%;
+}
+.full-article-title{
+    margin-top: 2%;
+    text-align: center;
+}
+.full-article-text{
+    font-size: 1.4em;
+    padding: 1% 2% 1% 2%;
+    margin-bottom: 2em;
+    margin-top: 1em;
+    border-radius: 1em;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Play', sans-serif;
+    background-color: #1c1c1e;
+}
+.full-article>.sliscer-news{
+    margin: 1em 0em 1em 0em;
+    padding: 0px;
+    height: 0.3em;
+}

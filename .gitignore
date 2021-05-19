@@ -8,3 +8,4 @@
 *.pyc
 /__pycache__/
 .idea
+/kursach2/eidos/db.sqlite3

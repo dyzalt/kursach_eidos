@@ -1,0 +1,10 @@
+{% extends 'main/layout.html' %}
+{% block title%}{{article.title}}{% endblock title%}
+{% block body %}
+    <div class="full-article">
+        <h1 class="full-article-title">{{article.title}}</h1>
+        <div class="sliscer-news"></div>
+        <img src="{{article.image.url}}" alt="">
+        <div class="full-article-text">{{article.text|linebreaks}}</div>
+    </div>
+{% endblock body %}
