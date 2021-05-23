@@ -3,40 +3,98 @@ from games.app.DTOS.StoreDTOS import Store, ZakaStore, GogStore, SteamPayStore
 from games.app.DTOS.PriceDTO import Price
 from games.app.DTOS.GameDTO import Game as GameDTO
 from typing  import Dict, Union
+from django.db.utils import IntegrityError
 
 
-class Zaka(models.Model):
-    game_name = models.CharField(max_length=50, primary_key=True)
-    game_url = models.URLField()
-    price_amount = models.FloatField(null=True)
-    price_currency = models.CharField(max_length=10, null=True)
-    objects = models.Manager()
-
-class Gog(models.Model):
-    game_name = models.CharField(max_length=50, primary_key=True)
-    game_url = models.URLField()
-    price_amount = models.FloatField(null=True)
-    price_currency = models.CharField(max_length=10, null=True)
-    objects = models.Manager()
-
-class SteamPay(models.Model):
-    game_name = models.CharField(max_length=50, primary_key=True)
-    game_url = models.URLField()
-    price_amount = models.FloatField(null=True)
-    price_currency = models.CharField(max_length=10,  null=True)
-    objects = models.Manager()
 
 class Articles(models.Model):
     title = models.CharField('Title', max_length=50)
     text = models.TextField('Text')
     date = models.DateTimeField('Date')
+    image = models.ImageField()
     objects = models.Manager()
 
+
+class Zaka(models.Model):
+     game_name = models.CharField(max_length=50, blank=False, null=False, unique=True)
+     game_url = models.URLField(null=False, blank=False, unique=True)
+     price_amount = models.FloatField(null=True, blank=True)
+     price_currency = models.CharField(max_length=10, null=True, blank=True)
+     objects = models.Manager()
+
+     def save(self, *args, **kwargs):
+         if self.game_name == "" and self.game_url == "":
+             raise IntegrityError("Error in Zaka model GAME_NAME and GAME_URL are empty strings ")
+         elif self.game_url == "":
+             raise IntegrityError("Error in Zaka model GAME_URL is empty string ")
+         elif self.game_name == "":
+             raise IntegrityError("Error in Zaka model GAME_NAME is empty string ")
+         else:
+             super().save(*args, **kwargs)
+
+
+
+
+class Gog(models.Model):
+     game_name = models.CharField(max_length=50, blank=False, null=False, unique=True)
+     game_url = models.URLField(null=False, blank=False, unique=True)
+     price_amount = models.FloatField(null=True, blank=True)
+     price_currency = models.CharField(max_length=10, null=True, blank=True)
+     objects = models.Manager()
+
+     def save(self, *args, **kwargs):
+         if self.game_name == "" and self.game_url == "":
+             raise IntegrityError("Error in Gog model GAME_NAME and GAME_URL are empty strings ")
+         elif self.game_url == "":
+             raise IntegrityError("Error in Gog model GAME_URL is empty string ")
+         elif self.game_name == "":
+             raise IntegrityError("Error in Gog model GAME_NAME is empty string ")
+         else:
+             super().save(*args, **kwargs)
+
+
+
+class SteamPay(models.Model):
+    game_name = models.CharField(max_length=50, blank=False, null=False, unique=True)
+    game_url = models.URLField(null=False, blank=False, unique=True)
+    price_amount = models.FloatField(null=True, blank=True)
+    price_currency = models.CharField(max_length=10,  null=True, blank=True)
+    objects = models.Manager()
+
+    def save(self, *args, **kwargs):
+        if self.game_name == "" and self.game_url == "":
+            raise IntegrityError("Error in SteamPay  model GAME_NAME and GAME_URL are empty strings ")
+        elif self.game_url == "":
+            raise IntegrityError("Error in SteamPay model GAME_URL is empty string ")
+        elif self.game_name == "":
+            raise IntegrityError("Error in SteamPay  model GAME_NAME is empty string ")
+        else:
+            super().save(*args, **kwargs)
+
+
+
+class GameArticle(models.Model):
+    genre = models.CharField(max_length=100)
+    works_on = models.CharField(max_length=20)
+    release_date = models.CharField(max_length=30)
+    company = models.CharField(max_length=50)
+    age_rating = models.CharField(max_length=50)
+    eng_text = models.BooleanField(default=False)
+    ukr_text = models.BooleanField(default=False)
+    rus_text = models.BooleanField(default=False)
+    eng_audio = models.BooleanField(default=False)
+    ukr_audio = models.BooleanField(default=False)
+    rus_audio = models.BooleanField(default=False)
+    image = models.ImageField()
+    text = models.TextField()
+
+
 class Game(models.Model):
-    game_name = models.CharField(max_length=50, primary_key=True)
-    Zaka = models.OneToOneField(Zaka, on_delete=models.CASCADE, null=True, db_index=False)
-    Gog = models.OneToOneField(Gog, on_delete=models.CASCADE, null=True, db_index=False)
-    SteamPay = models.OneToOneField(SteamPay, on_delete=models.CASCADE, null=True, db_index=False)
+    game_name = models.CharField(max_length=50,  unique=True)
+    Zaka = models.OneToOneField(Zaka, on_delete=models.CASCADE, null=True, db_index=False,blank=True)
+    Gog = models.OneToOneField(Gog, on_delete=models.CASCADE, null=True, db_index=False,blank=True)
+    SteamPay = models.OneToOneField(SteamPay, on_delete=models.CASCADE, null=True, db_index=False, blank=True)
+    Article = models.OneToOneField(GameArticle, on_delete=models.CASCADE, null=True, blank=True)
     objects = models.Manager()
 
     def get_stores_urls(self) -> Dict[Store, str]:
@@ -116,9 +174,8 @@ class Game(models.Model):
             GogStore:self.Gog,
             ZakaStore:self.Zaka,
             SteamPayStore:self.SteamPay}
-
         for key in stores_prices.keys():
-            price:Price = stores_prices[key]
+            price: Price = stores_prices[key]
             amount, currency = price.get_amount(), price.get_currency()
             model = switch[key]
             try:
@@ -126,19 +183,19 @@ class Game(models.Model):
             except AttributeError:
                 pass
 
-    def __updt_urls(self, model, url:str):
+    def __updt_urls(self, model, url: str):
         model.game_url = url
         model.save()
 
-    def update_urls(self, stores_urls:Dict[Store, str]):
+    def update_urls(self, stores_urls: Dict[Store, str]):
         switch = {
-            GogStore:self.Gog,
-            ZakaStore:self.Zaka,
-            SteamPayStore:self.SteamPay
+            GogStore: self.Gog,
+            ZakaStore: self.Zaka,
+            SteamPayStore: self.SteamPay
         }
 
         for key in stores_urls.keys():
-            url:str = stores_urls[key]
+            url: str = stores_urls[key]
             model = switch[key]
             try:
                 self.__updt_urls(model, url)
@@ -150,4 +207,3 @@ class Game(models.Model):
         prices = self.get_stores_prices()
         name = self.game_name
         return GameDTO(name, urls, prices)
-
