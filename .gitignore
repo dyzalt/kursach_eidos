@@ -5,7 +5,6 @@
 /kursach2/eidos/games/app/Parser/__init__.py
 /kursach2/eidos/__init__.py
 /kursach2/__init__.py
-*.pyc
 /__pycache__/
 .idea
-/kursach2/eidos/db.sqlite3
+*.pyc

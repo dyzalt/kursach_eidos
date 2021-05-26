@@ -1,0 +1,96 @@
+{% extends 'main/layout.html' %}
+{% block title%}{{game.game_name}}{% endblock title%}
+{% block body %}
+    <div id="content-game-detail">
+        <div class="game-detail-img"><img src="{{game.Article.image.url}}" alt=""></div>
+        <div class="games-detail-all">
+            <div class="game-detail-text">{{game.Article.text|linebreaks}}</div>
+            <div class="game-detail-info">
+                <div class="game-detail-head">Game Details</div>
+                <div class="sliscer-games"></div>
+                <ul>
+                    <li>
+                        <div class="game-detail-head">Prices</div>
+                        <ul>
+                            <li class="game-detail-li"> <div class="game-detail-li-head"><a href="{{game.Gog.game_url}}">Gog <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link" viewBox="0 0 16 16">
+                                <path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z"/>
+                                <path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z"/>
+                            </svg>
+                            </a></div><div> {{game.Gog.price_amount}} {{game.Gog.price_currency}}</div></li>
+                            <li class="game-detail-li"><div class="game-detail-li-head"><a href="{{game.SteamPay.game_url}}">SteamPay <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link" viewBox="0 0 16 16">
+                                <path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z"/>
+                                <path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z"/>
+                            </svg></a> </div> {{game.SteamPay.price_amount}} {{game.SteamPay.price_currency}}</li>
+                            <li class="game-detail-li"><div class="game-detail-li-head"><a href="{{game.Zaka.game_url}}">Zaka <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link" viewBox="0 0 16 16">
+                                <path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z"/>
+                                <path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z"/>
+                            </svg></a> </div>{{game.Zaka.price_amount}} {{game.Zaka.price_currency}}</li>
+                        </ul>
+                        <div class="sliscer-games"></div>
+                    </li>
+                    <li>
+                        <div class="game-detail-head">Details</div>
+                        <ul>
+                            <li class="game-detail-li"><div class="game-detail-li-head">Genre:</div><div>{{game.Article.genre}}</div></li>
+                            <li class="game-detail-li"><div class="game-detail-li-head">Works on:</div><div>{{game.Article.works_on}}</div></li>
+                            <li class="game-detail-li"><div class="game-detail-li-head">Release date:</div><div>{{game.Article.release_date}}</div></li>
+                            <li class="game-detail-li"><div class="game-detail-li-head">Company:</div><div>{{game.Article.company}}</div></li>
+                            <li class="game-detail-li"><div class="game-detail-li-head">Rating:</div><div>{{game.Article.age_rating}}</div></li>
+                        </ul>
+                        <div class="sliscer-games"></div>
+                    </li>
+                    <li>
+                        <div class="game-detail-head">Languages</div>
+                        <ul>
+                            <li class="game-detail-li">
+                                <div class="game-detail-li-lg">English</div>
+                                <div class="game-detail-li-lg-grid">
+                                    <div class="game-detail-li-lg-text">{% if game.Article.eng_text %}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                    </svg> text{% else %}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check game-detail-cross" viewBox="0 0 16 16">
+                                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                    </svg> text{% endif %}</div>
+                                    <div class="game-detail-li-lg-audio">{% if game.Article.eng_audio %} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                    </svg>audio {% else %}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check game-detail-cross" viewBox="0 0 16 16">
+                                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                    </svg> audio{% endif %}</div>
+                                </div>
+                            </li>
+                            <li class="game-detail-li">
+                                <div class="game-detail-li-lg">Russian</div>
+                                <div class="game-detail-li-lg-grid">
+                                    <div class="game-detail-li-lg-text">{% if game.Article.rus_text %}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                    </svg> text{% else %}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check game-detail-cross" viewBox="0 0 16 16">
+                                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                    </svg> text{% endif %}</div>
+                                    <div class="game-detail-li-lg-audio">{% if game.Article.rus_audio %} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                    </svg>audio {% else %} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check game-detail-cross" viewBox="0 0 16 16">
+                                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                    </svg> audio{% endif %}</div>
+                                </div>
+                            </li>
+                            <li class="game-detail-li">
+                                <div class="game-detail-li-lg">Ukrainian</div>
+                                <div class="game-detail-li-lg-grid">
+                                    <div class="game-detail-li-lg-text">{% if game.Article.ukr_text %}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                    </svg> text{% else %}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check game-detail-cross" viewBox="0 0 16 16">
+                                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                    </svg>text{% endif %}</div>
+                                    <div class="game-detail-li-lg-audio">{% if game.Article.ukr_audio %} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                    </svg>audio {% else %}<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check game-detail-cross" viewBox="0 0 16 16">
+                                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                    </svg> audio{% endif %}</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock body %}

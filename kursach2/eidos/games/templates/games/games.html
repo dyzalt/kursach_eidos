@@ -1,4 +1,63 @@
 {% extends 'main/layout.html' %}
 {% block title%}Games{% endblock title%}
 {% block body %}
+    <div id="content-games">
+        <input type="text" class="search-input" placeholder="Search for...">
+        <div class="sliscer-games"></div>
+        <div class="games-all">
+            <div class="filters">
+                <ul class="filters-element">
+                    <li>
+                        <div class="filters-head">Price</div>
+                        <ul>
+                            <li class="games-radio"><input type="radio" id="price-radio-1" name="price-radio"><label for="price-radio-1"> Under $ 5</label></li>
+                            <li class="games-radio"><input type="radio" id="price-radio-2" name="price-radio"><label for="price-radio-2"> Under $ 10</label></li>
+                            <li class="games-radio"><input type="radio" id="price-radio-3" name="price-radio"><label for="price-radio-3"> Under $ 15</label></li>
+                            <li class="games-radio"><input type="radio" id="price-radio-4" name="price-radio"><label for="price-radio-4"> Under $ 25</label></li>
+                            <li class="games-radio"><input type="radio" id="price-radio-5" name="price-radio"><label for="price-radio-5"> $25+</label></li>
+                            <div class="sliscer-games"></div>
+                        </ul>
+                    </li>
+                    <li><div class="filters-head">System</div>
+                        <ul>
+                            <li class="games-radio"><input type="radio" id="system-radio-1" name="system-radio"><label for="system-radio-1">Windows</label></li>
+                            <li class="games-radio"><input type="radio" id="system-radio-2" name="system-radio"><label for="system-radio-2"> OSX</label></li>
+                            <li class="games-radio"><input type="radio" id="system-radio-3" name="system-radio"><label for="system-radio-3"> Linux</label></li>
+                            <div class="sliscer-games"></div>
+                        </ul></li>
+                    <li><div class="filters-head">Features</div>
+                        <ul>
+                            <li class="games-radio"><input type="radio" id="features-radio-1" name="features-radio"><label for="features-radio-1">Single-player</label></li>
+                            <li class="games-radio"><input type="radio" id="features-radio-2" name="features-radio"><label for="features-radio-2"> Multi-player</label></li>
+                            <li class="games-radio"><input type="radio" id="features-radio-3" name="features-radio"><label for="features-radio-3"> Co-op</label></li>
+                            <li class="games-radio"><input type="radio" id="features-radio-4" name="features-radio"><label for="features-radio-4"> Achievements</label></li>
+                            <li class="games-radio"><input type="radio" id="features-radio-5" name="features-radio"><label for="features-radio-5"> Leaderboards</label></li>
+                            <div class="sliscer-games"></div>
+                        </ul></li>
+                    <li><div class="filters-head">Language</div>
+                        <ul>
+                            <li class="games-radio"><input type="radio" id="language-radio-1" name="language-radio"><label for="language-radio-1">English</label></li>
+                            <li class="games-radio"><input type="radio" id="language-radio-2" name="language-radio"><label for="language-radio-2"> Русский</label></li>
+                            <li class="games-radio"><input type="radio" id="language-radio-3" name="language-radio"><label for="language-radio-3"> Українська</label></li>
+                            <div class="sliscer-games"></div>
+                        </ul></li>
+                    <li><div class="filters-head">Hide</div>
+                        <ul>
+                            <li class="games-radio"><input type="radio" id="hide-radio-1" name="hide-radio"><label for="hide-radio-1">DLC</label></li>
+                        </ul></li>
+                </ul>
+            </div>
+            <div class="games-grid">
+                {% for el in games %}
+                        <div class="games-grid-element">
+                            <a href="{% url 'game' el.id %}">
+                            <img src="{{el.Article.image.url}}" alt="" class="games-grid-element-img" >
+                            <div class="games-grid-element-name">{{el.game_name}}<div class="games-grid-element-price">{{el.Gog.price_amount}} $</div></div>
+                            </a>
+                        </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
 {% endblock body %}

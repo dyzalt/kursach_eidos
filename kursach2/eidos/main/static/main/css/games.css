@@ -1,0 +1,92 @@
+@import "games_detail.css";
+#content-games{
+    margin-top: 3%;
+}
+.search-input{
+    margin-left: 32%;
+    width: 40%;
+    height: 5%;
+    font-size: 1.4em;
+    padding: 0.6em;
+}
+.sliscer-games{
+    margin: 1em 0em;
+    height: 0.13em;
+    background-color: #c4001a;
+}
+.games-all{
+    display: grid;
+    grid-template-columns: 22.5% 77.5%;
+}
+.filters-element{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.filters-element>li>ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.filters-head{
+    padding-bottomn: 2em;
+    font-size: 1.5em;
+}
+.games-radio input[type='radio']{
+    appearance: none;
+    background: white;
+    outline: 0.125rem solid #333;
+    border: 0.19rem solid white;
+    width: 0.65em;
+    height: 0.65em;
+    margin-right: 0.3em;
+    margin-left: 0.1em;
+}
+.games-radio input[type='radio']:checked {
+    background: #c4001a;
+    outline: 0.125rem solid #c4001a;
+}
+.games-radio{
+    font-size: 1.2em;
+}
+.games-grid{
+    display: grid;
+    grid-template-columns: 33.33333% 33.33333% 33.33333%;
+    grid-template-rows: 16em;;
+    margin-left: 2%;
+    grid-column-gap: 1em;
+}
+.games-grid-element{
+    background-color: #1c1c1e;
+    height: 17em;
+    box-shadow: 0px 0 8px black;
+    position: relative;
+}
+.games-grid-element>a{
+    color: white;
+}
+.games-grid-element>a:hover{
+    color: #c4001a;
+}
+.games-grid-element img{
+    width: 100%;
+}
+
+a:hover{
+    text-decoration: none;
+}
+.games-grid-element-name{
+    font-size: 1em;
+    margin: 0.3em 0 0 0.6em;
+    width: 100%;
+}
+.games-grid-element-price{
+    text-align: right;
+    width: 95%;
+    position: absolute;
+    bottom: 0;
+    color: white;
+}
+.games-grid-element-img{
+    height: 12em;
+}

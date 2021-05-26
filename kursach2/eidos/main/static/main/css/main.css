@@ -1,5 +1,27 @@
 @import "articles.css";
 @import "registration.css";
+@import "games.css";
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+ul[class],
+ol[class] {
+  list-style: none;
+}
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
 ::selection {
     background: transparent;
 }
